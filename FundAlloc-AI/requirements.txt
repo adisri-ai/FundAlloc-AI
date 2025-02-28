@@ -1,1 +1,5 @@
-
+pandas 
+pulp
+flask
+openpyxl
+gunicorn
