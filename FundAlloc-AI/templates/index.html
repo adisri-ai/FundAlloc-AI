@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FundAlloc-AI</title>
+    <link rel="icon" href="./static/logo.png">
+    <link rel="stylesheet" href="./static/styles.css">
+</head>
+<body>
+    <div class="heading">
+        <div class="img"><img src="./static/logo.png" alt=""></div>
+        <div class="name">
+            <h1 style="color:rgb(199, 202, 18); padding-left:2vw;">FundAlloc-AI</h1>
+            <p style="color:rgb(43, 226, 220); padding-left:1vw;">Now decide now your risk and return!</p>
+        </div>
+    </div>
+    <div style="background-image: linear-gradient(to right  , orange , green); width:100%; height:10px;"></div>
+    <br>
+    <div class="container">
+        <h1 style="color:white; font-family: 'Courier New', Courier, monospace;">Indian Markets AI-based Mutual Fund Generator</h1>
+        <p style="color:white; font-family: 'Courier New', Courier, monospace;">Enter the worst possible return(in %) you can bear in a bad market year:</p>
+        <input type="number" id="input1" step="0.01" placeholder="Eg: Enter -5.00 for -5% ,7.00 for +7.00%">
+        <button onclick="submitInput()">Submit</button>
+    </div>
+    <div id="allocation">
+    </div>
+    <div id="prev">
+    </div>
+    <script src="./static/script.js"></script>
+</body>
+</html>
