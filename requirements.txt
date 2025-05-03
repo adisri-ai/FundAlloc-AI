@@ -3,4 +3,4 @@ pulp
 flask
 openpyxl
 gunicorn
-sklearn
+scikit-learn
