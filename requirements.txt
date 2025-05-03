@@ -3,3 +3,4 @@ pulp
 flask
 openpyxl
 gunicorn
+sklearn
