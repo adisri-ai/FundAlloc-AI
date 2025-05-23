@@ -109,7 +109,16 @@ slides.forEach(slide => {
     popupImg.src = slide.src;
   });
 });
-
+slides.forEach(slide=>{
+  slide.addEventListener('mouseenter' , ()=>{
+    clearInterval(interval);
+  });
+});
+slides.forEach(slide =>{
+  slide.addEventListener("mouseleave" , ()=>{
+    resetAutoplay();
+  })
+})
 closeBtn.onclick = () => {
   popup.style.display = 'none';
 };
@@ -117,6 +126,5 @@ closeBtn.onclick = () => {
 window.addEventListener('click', (e) => {
   if (e.target === popup) popup.style.display = 'none';
 });
-
 showSlide(index);
 startAutoplay();
