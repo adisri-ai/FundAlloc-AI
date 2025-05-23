@@ -19,24 +19,26 @@
     <br>
     <div class="slider">
         <div class="slides">
-            <img src="./static/slides/slide1.png" class="slide active" />
-            <img src="./static/slides/slide2.png" class="slide" />
-            <img src="./static/slides/slide3.png" class="slide"/>
-            <img src="./static/slides/slide4.png" class="slide"/>
-            <img src="./static/slides/slide5.png" class="slide"/>
-            <img src="./static/slides/slide6.png" class="slide"/>
-            <img src="./static/slides/slide7.png" class="slide"/>
+            <div class="slider" id="sliderContainer">
+                <img src="./static/slides/slide1.png" class="slide active" />
+                <img src="./static/slides/slide2.png" class="slide" />
+                <img src="./static/slides/slide3.png" class="slide"/>
+                <img src="./static/slides/slide4.png" class="slide"/>
+                <img src="./static/slides/slide5.png" class="slide"/>
+                <img src="./static/slides/slide6.png" class="slide"/>
+                <img src="./static/slides/slide7.png" class="slide"/>
+                </div>
+                <button class="nav prev">&#10094;</button>
+                <button class="nav next">&#10095;</button>
+                <div class="dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
-            <button class="nav prev">&#10094;</button>
-            <button class="nav next">&#10095;</button>
-            <div class="dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
         </div>
     </div>
     <div class="popup" id="popup">
@@ -52,6 +54,91 @@
     <div id="allocation">
     </div>
     <div id="prev">
+    </div>
+    <div class="faq-body">
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <details>
+                <summary>What is AI-Based Mutual Fund Screener?</summary>
+                <p>The AI-Based Mutual Fund Screener is a web-based tool in that uses advanced AI algorithms to screens past data of 
+                    over 700 mutual funds and figures out the combination of mutual funds within your defined risk constraints which 
+                    has generated maximum CAGR in last 11 years. It aims to maximize the CAGR without breaching your risk limits for each year. 
+                    The idea is to help you in decision-making by providing meaningful insights..</p>
+            </details>
+            <details>
+                <summary>How does the screener find the best portfolio?</summary>
+                <p>You input constraints like maximum acceptable loss (e.g., -9%, +3%) in a bad market for a given calendar year.
+                     The AI algorithms analyses 11 years of historical data from over 700 mutual funds, searching  for combinations of mutual funds that has generated maximum portfolio returns within your risk limits. It generates portfolio which has historically achieved 
+                    - Maximum possible CAGR over 11 years 
+                    - Your risk limit (maximum acceptable loss) is not breached  for any of the year</p>
+            </details>
+            <details>
+                <summary>Some of the funds identified were not even available 6 years back. </summary>
+                <p>In order to ensure high quality we have taken year 2018 as the cut off year and all the funds available in the 
+                    market after 2018 has been considered. For funds who were not available before 2018, the category average returns 
+                    has been assumed to be the funds return before 2018.</p>
+            </details>
+            <details>
+                <summary>Does the screener provide investment advice?</summary>
+                <p>
+                    The entire findings are back tested  results based on historical data. The aim is to help you in your 
+                    decision making by providing meaningful insights and is not an investment advice. You retain full control 
+                    over all investment decisions, making it a tool to support, not replace, your judgment.
+                </p>
+            </details>
+            <details>
+                <summary>Who is the screener designed for?</summary>
+                <p>
+                    The screener is built for decision-makers, including individual investors seeking high-return portfolios, 
+                    fund houses designing optimized fund combinations, portfolio managers balancing risk and returns, and financial 
+                    firms enhancing their analysis capabilities. It complements your expertise with AI-driven insights.
+                </p>
+            </details>
+            <details>
+                <summary>Is the screener free to use?</summary>
+                <p>
+                    Yes, during the beta phase, the screener is free with full access to its AI-powered features. 
+                    Test it, explore portfolio options, and share feedback to help us improve. A commercial model 
+                    may follow post-beta, details to be finalized.
+                </p>
+            </details>
+            <details>
+                <summary>How reliable is the historical data used by the screener?</summary>
+                <p>
+                    The screener relies on publicly available mutual fund performance data  for its 11-year back testing. 
+                    The AI algorithms processes this data transparently, delivering verifiable results. While a s
+                    trong 11-year back tested results hints at future potential, it is not a guarantee due to changing market 
+                    conditions.
+                </p>
+            </details>
+            <details>
+                <summary>Can the screener ensure I will achieve the same returns in the future?</summary>
+                <p>
+                    No, the screener cannot guarantee future returns. It generates portfolios that gave maximum returns within 
+                    risk constraints as per your input. This ensures limited downside as per your input for each calendar year 
+                    over the past 11 years providing a robust hint of potential performance in future. However, markets are 
+                    unpredictable, and you should use the insights to support along with your own research or professional help.
+                </p>
+            </details>
+            <details>
+                <summary> What sets this screener apart from other mutual fund screeners available in the market?</summary>
+                <p>
+                    Unlike typical screeners which identify best performer, worst performer or return of funds over given periods, 
+                    our AI-Based Mutual Fund Screener uses advanced AI algorithms to screen 700+ funds to figure out a portfolio 
+                    with maximum returns within your defined risk constraints based on the past mutual fund  data. The outcome is
+                    generated on last 11 years of back tested mutual fund data. While others list funds, our tool figures out 
+                    portfolios, saving time and enhancing precision. It is a decision-making aid, not advice, and free in beta, 
+                    unlike many premium screeners.
+                </p>
+            </details>
+            <details>
+                <summary>How do I start using the screener?</summary>
+                <p>
+                    You can write to us to request free beta access. You can also book a demo to see the AI in action and get your doubts 
+                    cleared.
+                </p>
+            </details>
+        </section>
     </div>
     <script src="./static/script.js"></script>
 </body>
