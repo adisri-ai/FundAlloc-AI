@@ -98,7 +98,7 @@ function updatePopup(i) {
 function startAutoplay() {
   clearInterval(interval);
   interval = setInterval(() => {
-    if (isPopup && popupPaused) return; // Pause only if popup mode AND paused
+    if (isPopup && popupPaused) return; 
     index = (index + 1) % slides.length;
     showSlide(index);
   }, 5000);
@@ -132,7 +132,6 @@ dots.forEach((dot, i) => {
     resumePopupAutoplay();
   };
 });
-
 slides.forEach((slide, i) => {
   slide.addEventListener('click', () => {
     isPopup = true;
@@ -143,28 +142,20 @@ slides.forEach((slide, i) => {
     startAutoplay();
   });
 });
-
-// Pause/resume slideshow on hover (main slider)
 sliderContainer.addEventListener('mouseenter', pauseAutoplay);
 sliderContainer.addEventListener('mouseleave', () => {
   if (!isPopup) startAutoplay();
 });
-
-// Toggle pause/resume on popup image click
 popupImg.onclick = () => {
   popupPaused = !popupPaused;
   if (!popupPaused) startAutoplay();
 };
-
-// Close popup
 closeBtn.onclick = () => {
   popup.style.display = 'none';
   isPopup = false;
   popupPaused = false;
   startAutoplay();
 };
-
-// Clicking outside image also closes popup
 window.addEventListener('click', (e) => {
   if (e.target === popup) {
     popup.style.display = 'none';
@@ -173,7 +164,5 @@ window.addEventListener('click', (e) => {
     startAutoplay();
   }
 });
-
-// Start
 showSlide(index);
 startAutoplay();
