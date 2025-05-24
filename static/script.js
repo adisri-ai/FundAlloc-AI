@@ -60,71 +60,120 @@ const dots = document.querySelectorAll('.dot');
 const popup = document.getElementById('popup');
 const popupImg = document.getElementById('popupImage');
 const closeBtn = document.getElementById('closePopup');
+const sliderContainer = document.getElementById('sliderContainer');
+
+const popupDots = document.querySelector('.popup-dots');
 
 let index = 0;
 let interval;
+let isPopup = false;
+let popupPaused = false;
 
 function showSlide(i) {
   slides.forEach((slide, idx) => {
     slide.classList.toggle('active', idx === i);
     dots[idx].classList.toggle('active', idx === i);
   });
+  updatePopup(i);
+}
+
+function updatePopup(i) {
+  popupImg.src = slides[i].src;
+
+  // Rebuild popup dots
+  popupDots.innerHTML = '';
+  slides.forEach((_, idx) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (idx === i) dot.classList.add('active');
+    dot.onclick = () => {
+      index = idx;
+      showSlide(index);
+      resumePopupAutoplay();
+    };
+    popupDots.appendChild(dot);
+  });
 }
 
 function startAutoplay() {
+  clearInterval(interval);
   interval = setInterval(() => {
+    if (isPopup && popupPaused) return; // Pause only if popup mode AND paused
     index = (index + 1) % slides.length;
     showSlide(index);
   }, 5000);
 }
 
-function resetAutoplay() {
+function pauseAutoplay() {
   clearInterval(interval);
+}
+
+function resumePopupAutoplay() {
+  popupPaused = false;
   startAutoplay();
 }
 
 document.querySelector('.prev').onclick = () => {
   index = (index - 1 + slides.length) % slides.length;
   showSlide(index);
-  resetAutoplay();
+  resumePopupAutoplay();
 };
 
 document.querySelector('.next').onclick = () => {
   index = (index + 1) % slides.length;
   showSlide(index);
-  resetAutoplay();
+  resumePopupAutoplay();
 };
 
 dots.forEach((dot, i) => {
   dot.onclick = () => {
     index = i;
     showSlide(i);
-    resetAutoplay();
+    resumePopupAutoplay();
   };
 });
 
-slides.forEach(slide => {
+slides.forEach((slide, i) => {
   slide.addEventListener('click', () => {
+    isPopup = true;
+    popupPaused = false;
     popup.style.display = 'flex';
-    popupImg.src = slide.src;
+    index = i;
+    showSlide(index);
+    startAutoplay();
   });
 });
-slides.forEach(slide=>{
-  slide.addEventListener('mouseenter' , ()=>{
-    clearInterval(interval);
-  });
+
+// Pause/resume slideshow on hover (main slider)
+sliderContainer.addEventListener('mouseenter', pauseAutoplay);
+sliderContainer.addEventListener('mouseleave', () => {
+  if (!isPopup) startAutoplay();
 });
-slides.forEach(slide =>{
-  slide.addEventListener("mouseleave" , ()=>{
-    resetAutoplay();
-  })
-})
-closeBtn.onclick = () => {
-  popup.style.display = 'none';
+
+// Toggle pause/resume on popup image click
+popupImg.onclick = () => {
+  popupPaused = !popupPaused;
+  if (!popupPaused) startAutoplay();
 };
 
+// Close popup
+closeBtn.onclick = () => {
+  popup.style.display = 'none';
+  isPopup = false;
+  popupPaused = false;
+  startAutoplay();
+};
+
+// Clicking outside image also closes popup
 window.addEventListener('click', (e) => {
-  if (e.target === popup) popup.style.display = 'none';
+  if (e.target === popup) {
+    popup.style.display = 'none';
+    isPopup = false;
+    popupPaused = false;
+    startAutoplay();
+  }
 });
+
+// Start
 showSlide(index);
 startAutoplay();
