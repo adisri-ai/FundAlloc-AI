@@ -299,6 +299,12 @@ details p {
         max-height: 50vh;
         object-fit: contain;
     }
+    .faq-section h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 28px;
+        color: #ffd700;
+    }
     .slider {
         width: 95vw;
         height: auto;
@@ -350,7 +356,7 @@ details p {
         height: 60px;
     }
     .faq-section {
-        left: 0;
+        left: 50vw;
         width: 95vw;
     }
 }
